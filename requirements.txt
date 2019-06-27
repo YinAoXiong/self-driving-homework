@@ -1,0 +1,4 @@
+keras
+pillow
+matplotlib
+opencv-python
