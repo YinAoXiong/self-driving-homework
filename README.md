@@ -23,7 +23,7 @@
 使用--help查看main.py的使用说明
 
 ```
-usage: main.py [-h] [-i [INPUT]] [-o [OUTPUT]]
+usage: main.py [-h] [-i [INPUT]] [-o [OUTPUT]] [--show] [--fourcc FOURCC]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -31,5 +31,7 @@ optional arguments:
                         Video input path
   -o [OUTPUT], --output [OUTPUT]
                         [Optional] Video output path
+  --show                Demonstrate the process of processing video
+  --fourcc FOURCC       an identifier for a video codec, compression format,color or pixel format used in media files
 ```
 
