@@ -63,12 +63,19 @@ def processing(img, object_points, img_points, M, Minv, left_line, right_line):
 
     return result
 
-def calculate_img(img):
-    left_line = line.Line()
-    right_line = line.Line()
-    cal_imgs = utils.get_images_by_dir(os.path.join(os.path.dirname(os.path.realpath(__file__)),'camera_cal'))
-    object_points, img_points = utils.calibrate(cal_imgs, grid=(9, 6))
-    M, Minv = utils.get_M_Minv()
-    result=processing(img,object_points,img_points,M,Minv,left_line,right_line)
 
-    return result
+class LINE(object):
+    def __init__(self):
+        self.left_line = line.Line()
+        self.right_line = line.Line()
+        self.cal_imgs = utils.get_images_by_dir(os.path.join(
+            os.path.dirname(os.path.realpath(__file__)), 'camera_cal'))
+        self.object_points, self.img_points = utils.calibrate(
+            self.cal_imgs, grid=(9, 6))
+        self.M, self.Minv = utils.get_M_Minv()
+
+        
+    def calculate_img(self, img):
+        result = processing(img, self.object_points, self.img_points,
+                            self.M, self.Minv, self.left_line, self.right_line)
+        return result
